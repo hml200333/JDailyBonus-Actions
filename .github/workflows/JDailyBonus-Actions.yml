@@ -46,4 +46,11 @@ jobs:
         sed -i "s/var Key = '';/var Key = '${MyJDCookie03}';/" JD_DailyBonus.js
         sed -i "s/var DualKey = '';/var DualKey = '${MyJDCookie04}';/" JD_DailyBonus.js
         node JD_DailyBonus.js
-
+        
+    - name: Cleanup Workflow Runs
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        token: ${{ github.token }}
+        repository: ${{ github.repository }}
+        retain_days: 3
+        keep_minimum_runs: 3
